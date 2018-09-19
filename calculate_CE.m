@@ -4,31 +4,31 @@ clear;
 
 %set file path
 quantityoffiles=5;
-filelist=dir('/home/muyan/Documents/masterarbeit/ACE_AUTO');
-dest='/home/muyan/Documents/conditional entropy/TEST';  
+filelist=dir('D:\Masterarbeit\Quelle\ACE_AUTO');
+dest='D:\Masterarbeit\matlab\debug';  
 
 %define block size, set block number
 rownr=[1 1];        %[startrownr endrownr]
 %columnsize=200;    %comment if data is the whole matrix
 blocknumber=1;      %set 1 if data is the whole matrix
-orderofconditionalentropy=10;
+orderofconditionalentropy=9;
 format long;
 
 %select random files
 qty=quantityoffiles;
-randf=randperm(numel(filelist),qty);
-
-for ii=1:qty
-    while (randf(ii)==1)||(randf(ii)==2)
-        randf(ii)=randperm(numel(filelist),1);
-    end
-end
-
-%copy the selected files to destination folder
-for kk=1:qty
-    source=fullfile(filelist(randf(kk)).folder,filelist(randf(kk)).name);
-    copyfile(source,dest);
-end
+% randf=randperm(numel(filelist),qty);
+% 
+% for ii=1:qty
+%     while (randf(ii)==1)||(randf(ii)==2)
+%         randf(ii)=randperm(numel(filelist),1);
+%     end
+% end
+% 
+% %copy the selected files to destination folder
+% for kk=1:qty
+%     source=fullfile(filelist(randf(kk)).folder,filelist(randf(kk)).name);
+%     copyfile(source,dest);
+% end
 
 %get filelist of the current destination folder
 cfiles=dir(dest);
@@ -147,6 +147,8 @@ for i=1:qty
     block=horzcat(block,blockp(i).mat);
 end
 
+%block=[0 0 8 1 2 1 7 2 7 0 1 10 3 3 26 81 73458 239 12 23 349 12902 2349 230 120 2931 29 9348 93 943 124 34 0450 9435 3 21 2 4 5 6 1 10 10 21 2 73 3 7 2 8 2 38 2 9 3 4 9 2 100 0 8 1 2 1 7 2 7 0 1 10 3 3 26 81 73 21 2 4 5 6 1 10 10 21 2 73 3 7 2 8 2 ];
+
 %readjust column size to the new combined block 
 column=numel(block);
 
@@ -206,7 +208,11 @@ for n=1:ordofe
     %calculate Hy for (n-1).order
     occnmsize=size(occurrences_nm);
     Hy=zeros(occnmsize(1,1),1);
-    k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)))+1;
+    if mod(occurrences_n(1,1),numel(symbol))~=0
+        k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)))+1;
+    else
+        k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)));
+    end
     j=1;
     while ~isempty(occurrences_n)
         occnr=find(occurrences_n(:,1)<=numel(symbol)*k,1,'last');
@@ -221,7 +227,11 @@ for n=1:ordofe
             restsize=size(occurrences_n);
             occurrences_n=occurrences_n(occnr+1:restsize(1,1),:);
             if ~isempty(occurrences_n)
-                k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)))+1;
+                if mod(occurrences_n(1,1),numel(symbol))~=0
+                    k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)))+1;
+                else
+                    k=idivide(uint64(occurrences_n(1,1)),uint64(numel(symbol)));
+                end
             end
         end
     end
@@ -240,12 +250,12 @@ for n=1:ordofe
     H_ALL(n+1)=sum(Hy.*p_nm(:,2));
 end
 
-%store result
-entropy=fullfile(dest,'conditional_entropy');
-save(entropy,'H_ALL');
-
-allvar=fullfile(dest,'workspace');
-save(allvar);
+% %store result
+% entropy=fullfile(dest,'conditional_entropy');
+% save(entropy,'H_ALL');
+% 
+% allvar=fullfile(dest,'workspace');
+% save(allvar);
 
 plot(0:1:ordofe,H_ALL,'--*');
 xticks(0:1:ordofe);
