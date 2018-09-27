@@ -1,0 +1,108 @@
+\ProvidesPackageRCS $Header: beamerouterthemetnt.sty,v 0.1 2006/07/21  Exp $
+% \RequirePackage[absolute,overlay]{textpos}
+
+\mode<presentation>
+
+\pgfdeclareimage[width=\paperwidth]{tntbackground}{TNT_head_foot}
+\pgfdeclareimage[height=1\baselineskip]{tntlogo}{TNT_lightv4}
+
+
+% Headline and footline
+
+\defbeamertemplate*{footline}{empty}
+{
+}
+
+\defbeamertemplate*{headline}{empty}
+{
+}
+
+
+\defbeamertemplate*{headline}{tnt}
+{
+ \begin{beamercolorbox}[wd=\paperwidth,ht=1.7\baselineskip,dp=5pt,%
+       leftskip=0cm,rightskip=.3cm plus1fil]{section in head/foot}
+       \usebeamerfont{section in head/foot}
+%       \insertsectionnavigation{\paperwidth}
+      \ifx\insertsubsectionhead\@empty%
+      {\hfill\insertsectionhead\hfill}
+      \else%
+       {\hfill\insertsectionhead \ /  \insertsubsectionhead\hfill}
+      \fi
+%       \vspace{0.2\baselineskip}
+ \end{beamercolorbox}
+}
+
+
+
+\setbeamertemplate{mini frames}[box]
+\setbeamersize{text margin left=0.5cm}
+\setbeamersize{text margin right=0.5cm}
+\setbeamertemplate{navigation symbols}{}
+
+\defbeamertemplate*{footline}{tnt}
+{
+  % \begin{beamercolorbox}[wd=\paperwidth,ht=\baselineskip,dp=1.125ex,%
+  %   leftskip=0cm,rightskip=.3cm plus1fil]{section in head/foot}
+    % {%
+    %   \begin{textblock}{0}(0,0)
+    %     \pgfuseimage{tntbackground}
+    %   \end{textblock}
+    % }
+  % \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5\baselineskip,dp=1.125ex,%
+    leftskip=0cm,rightskip=.3cm plus1fil]{section in head/foot}
+    \unitlength1pt
+      % \begin{textblock}{0}(0,0)
+      %   \pgfuseimage{tntbackground}
+      % \end{textblock}
+    % \begin{picture}(0,0)(0,0)
+    %   \put(-0,0){\pgfuseimage{tntlogo}}x
+    % \end{picture}
+    \hspace*{1em}\pgfuseimage{tntlogo}
+    \begin{tabular}[b]{l}
+      \usebeamercolor{author}\insertshortauthor\\
+      \usebeamercolor{author}\insertemail
+    \end{tabular}\hfill
+    % \usebeamercolor[fg]{title}\inserttitle\hfill\hfill%
+    \usebeamercolor{page number in head/foot}
+    \usebeamerfont{page number in head/foot}
+    \insertframenumber
+  \end{beamercolorbox}
+}
+
+
+% background
+
+\defbeamertemplate*{background}{tntblack}
+{
+ \ifbeamercolorempty[bg]{background canvas}{}{\color{fg}\vrule width\paperwidth height\paperheight}%
+}
+
+\defbeamertemplate*{background}{tnt}
+{
+ \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}\vrule width\paperwidth height\paperheight}%
+}
+
+% \defbeamertemplate*{background}{tnt title}
+% {
+%   % \usebeamercolor{tnt title}%
+%   % {\color{bg}\vrule width\paperwidth height\paperheight}%
+% }
+
+%\defbeamertemplatealias{background}{tnt title}{title page}
+
+%\defbeamertemplate*{background canvas}{tnt}
+%{%
+%  \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}\vrule width\paperwidth height\paperheight}%
+%}
+
+%\defbeamertemplatealias{headline}{tnt without foot}{tnt}
+%\defbeamertemplatealias{headline}{tnt with foot}{tnt}
+%\defbeamertemplatealias{headline}{tnt}{tnt with foot}
+
+
+
+
+\mode
+<all>

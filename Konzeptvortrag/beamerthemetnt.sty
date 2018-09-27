@@ -1,0 +1,45 @@
+\ProvidesPackageRCS $Header: beamerthemetnt.sty,v 0.1 2006/07/21 $
+
+% Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\mode<presentation>
+
+
+\usefonttheme{tnt}
+\usecolortheme{tnt}
+%\useinnertheme{default}
+\useinnertheme{tnt}
+\useoutertheme{tnt}
+
+
+\newcommand{\ps@tntblack}                                                                                                                               
+{%
+%\setbeamercolor{normal text}{fg=white,bg=red}
+\setbeamertemplate{background}[tntblack]
+\setbeamertemplate{footline}[empty]
+%\setbeamercolor{normal text}{parent=tnt normal text}
+%\setbeamercolor{normal text}{parent=tnt normal text inverse}
+
+%\setbeamertemplate{headline}[tnttitle]
+}%                                                                                                                                                          
+
+\newcommand{\ps@tntdefault}                                                                                                                               
+{%
+\setbeamertemplate{background}[tnt]
+\setbeamertemplate{footline}[tnt]
+%\setbeamertemplate{headline}[tnttitle]
+}%                                                                                                                                                          
+
+\mode
+<all>
+
+\newcommand{\insertemail}{}
+\newcommand{\email}[1]{%
+  \renewcommand{\insertemail}{#1}
+}
+
+\institute{Institut f\"ur Informationsverarbeitung\\ Leibniz Universit\"at Hannover}
+

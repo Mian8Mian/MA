@@ -1,0 +1,17 @@
+\babel@toc {ngerman}{}
+\beamer@sectionintoc {1}{Overview}{1}{0}{1}
+\beamer@sectionintoc {2}{Cochlear Implant(CI)}{2}{0}{2}
+\beamer@sectionintoc {3}{Cochlear Implant(CI)}{3}{0}{3}
+\beamer@sectionintoc {4}{Audio signal processing}{4}{0}{4}
+\beamer@sectionintoc {5}{Audio signal processing}{5}{0}{5}
+\beamer@sectionintoc {6}{Theoretical principles}{6}{0}{6}
+\beamer@sectionintoc {7}{Theoretical principles}{7}{0}{7}
+\beamer@sectionintoc {8}{Theoretical principles}{8}{0}{8}
+\beamer@sectionintoc {9}{Lossless coding}{9}{0}{9}
+\beamer@sectionintoc {10}{Lossless coding}{10}{0}{10}
+\beamer@sectionintoc {11}{Lossless coding}{11}{0}{11}
+\beamer@sectionintoc {12}{Lossless coding}{12}{0}{12}
+\beamer@sectionintoc {13}{Lossless coding}{13}{0}{13}
+\beamer@sectionintoc {14}{Lossless coding}{14}{0}{14}
+\beamer@sectionintoc {15}{Lossless coding}{15}{0}{15}
+\beamer@sectionintoc {16}{Future work and Timeline}{16}{0}{16}
